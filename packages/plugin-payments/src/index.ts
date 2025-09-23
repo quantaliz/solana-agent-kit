@@ -1,10 +1,10 @@
 import type { Plugin, SolanaAgentKit } from "solana-agent-kit";
 
 // Import actions
-import examplePaymentAction from "./actions/examplePayment";
+import x402PaymentAction from "./actions/x402Payment";
 
 // Import tools
-import { examplePaymentMethod } from "./tools/examplePayment";
+import { makeX402PaymentRequest, getX402PaymentInfo } from "./tools/x402Payment";
 
 // Define and export the plugin
 const PaymentsPlugin = {
@@ -12,12 +12,13 @@ const PaymentsPlugin = {
 
   // Combine all tools
   methods: {
-    examplePaymentMethod,
+    makeX402PaymentRequest,
+    getX402PaymentInfo,
   },
 
   // Combine all actions
   actions: [
-    examplePaymentAction,
+    x402PaymentAction,
   ],
 
   // Initialize function
@@ -35,5 +36,5 @@ const PaymentsPlugin = {
 export default PaymentsPlugin;
 
 // Named exports for direct access
-export { examplePaymentMethod } from "./tools/examplePayment";
-export { examplePaymentAction } from "./actions/examplePayment";
+export { makeX402PaymentRequest, getX402PaymentInfo } from "./tools/x402Payment";
+export { x402PaymentAction } from "./actions/x402Payment";

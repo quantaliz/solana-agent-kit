@@ -66,6 +66,8 @@
     "@openai/agents": "^0.0.7",
     "@solana/spl-token": "^0.4.13",
     "@solana/web3.js": "^1.98.2",
+    "x402-axios": "^0.6.0",
+    "axios": "^1.7.9",
     "ai": "^4.1.5",
     "bs58": "^6.0.0",
     "rpc-websockets": "^10.0.0",
