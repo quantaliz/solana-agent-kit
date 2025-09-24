@@ -3,6 +3,8 @@ import DefiPlugin from "@solana-agent-kit/plugin-defi";
 import MiscPlugin from "@solana-agent-kit/plugin-misc";
 import NFTPlugin from "@solana-agent-kit/plugin-nft";
 import TokenPlugin from "@solana-agent-kit/plugin-token";
+import PaymentsPlugin from "@solana-agent-kit/plugin-payments";
+import paymentsTests from "./payments";
 import { SolanaAgentKit } from "solana-agent-kit";
 
 export default async function (agentKit: SolanaAgentKit) {
@@ -11,7 +13,8 @@ export default async function (agentKit: SolanaAgentKit) {
     .use(NFTPlugin)
     .use(DefiPlugin)
     .use(MiscPlugin)
-    .use(BlinksPlugin);
+    .use(BlinksPlugin)
+    .use(PaymentsPlugin);
 
   // Test a method
   console.log("Testing Token Plugin...");
@@ -32,4 +35,7 @@ export default async function (agentKit: SolanaAgentKit) {
 
   console.log("Testing Blinks Plugin...");
   // Add your blinks plugin test here
+
+  console.log("Testing Payments Plugin...");
+  await paymentsTests(agentKit);
 }
