@@ -16,3 +16,5 @@ drizzle/
 tsconfig.tsbuildinfo
 
 .pnpm-store
+
+.qwen/settings.json
