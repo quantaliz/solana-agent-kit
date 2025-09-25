@@ -1,6 +1,42 @@
 import axios from "axios";
-import { withPaymentInterceptor, decodeXPaymentResponse, createSigner, type Hex } from "x402-axios";
-import { SolanaAgentKit } from "solana-agent-kit";
+import type { Hex, Signer, MultiNetworkSigner } from "x402-axios";
+import { withPaymentInterceptor, decodeXPaymentResponse, createSigner } from "x402-axios";
+import type { SolanaAgentKit } from "solana-agent-kit";
+
+/**
+ * Custom signer that works with SolanaAgentKit's wallet
+ */
+class WalletSigner implements Signer {
+  private wallet: any; // Using any because we need to check if getSecretKey exists at runtime
+  private network: string;
+
+  constructor(wallet: any, network: string = "solana-devnet") {
+    this.wallet = wallet;
+    this.network = network;
+  }
+
+  async signMessage(message: Uint8Array): Promise<Uint8Array> {
+    // Use the wallet's signMessage function if available
+    if (this.wallet.signMessage) {
+      return await this.wallet.signMessage(message);
+    } else {
+      throw new Error("Wallet does not support signing messages");
+    }
+  }
+
+  async signTransaction(transaction: any): Promise<any> {
+    // Use the wallet's signTransaction function if available
+    if (this.wallet.signTransaction) {
+      return await this.wallet.signTransaction(transaction);
+    } else {
+      throw new Error("Wallet does not support signing transactions");
+    }
+  }
+
+  get publicKey(): string {
+    return this.wallet.publicKey.toBase58();
+  }
+}
 
 /**
  * Make a payment-enabled request using x402-axios
@@ -15,18 +51,15 @@ export async function makeX402PaymentRequest(
   endpointPath: string
 ): Promise<{ data: any; paymentInfo: any }> {
   try {
-    // Get the private key from the agent's wallet
-    const privateKey = agent.wallet.getSecretKey() as unknown as Hex;
-    
-    // Create a signer using the agent's network
-    const signer = await createSigner("solana-devnet", privateKey);
+    // Create a signer using the agent's wallet
+    const walletSigner = new WalletSigner(agent.wallet, "solana-devnet");
     
     // Create an axios instance with the payment interceptor
     const api = withPaymentInterceptor(
       axios.create({
         baseURL,
       }),
-      signer,
+      walletSigner,
     );
     
     // Make the request
@@ -58,18 +91,15 @@ export async function getX402PaymentInfo(
   endpointPath: string
 ): Promise<any> {
   try {
-    // Get the private key from the agent's wallet
-    const privateKey = agent.wallet.getSecretKey() as unknown as Hex;
-    
-    // Create a signer using the agent's network
-    const signer = await createSigner("solana-devnet", privateKey);
+    // Create a signer using the agent's wallet
+    const walletSigner = new WalletSigner(agent.wallet, "solana-devnet");
     
     // Create an axios instance with the payment interceptor
     const api = withPaymentInterceptor(
       axios.create({
         baseURL,
       }),
-      signer,
+      walletSigner,
     );
     
     // Make a HEAD request to get payment information without fetching the full resource

@@ -1,4 +1,4 @@
-import { Action } from "solana-agent-kit";
+import type { Action, SolanaAgentKit } from "solana-agent-kit";
 import { z } from "zod";
 
 const x402PaymentSchema = z.object({
@@ -26,14 +26,14 @@ const x402PaymentAction: Action = {
       },
     ],
   ],
-  schema: x402PaymentSchema,
-  handler: async (agent, input) => {
+  schema: x402PaymentSchema as any, // Cast to any to avoid Zod version incompatibility
+  handler: async (agent: SolanaAgentKit, input: Record<string, any>) => {
     // Import the tool function dynamically to avoid circular dependencies
     const { makeX402PaymentRequest } = await import("../tools/x402Payment");
     
     try {
-      const { baseURL, endpointPath } = x402PaymentSchema.parse(input);
-      const result = await makeX402PaymentRequest(agent, baseURL, endpointPath);
+      const parsedInput = x402PaymentSchema.parse(input);
+      const result = await makeX402PaymentRequest(agent, parsedInput.baseURL, parsedInput.endpointPath);
       
       return {
         data: result.data,

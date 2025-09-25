@@ -1,3 +1,5 @@
+import type { Plugin, SolanaAgentKit } from "solana-agent-kit";
+
 // Import tools
 import { makeX402PaymentRequest, getX402PaymentInfo } from "./tools/x402Payment";
 
@@ -20,7 +22,7 @@ const PaymentsPlugin = {
   ],
 
   // Initialize function
-  initialize: function (): void {
+  initialize: function (agent: SolanaAgentKit): void {
     // Initialize all methods with the agent instance
     for (const [methodName, method] of Object.entries(this.methods)) {
       if (typeof method === "function") {
