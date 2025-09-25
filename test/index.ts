@@ -3,6 +3,7 @@ import DefiPlugin from "@solana-agent-kit/plugin-defi";
 import MiscPlugin from "@solana-agent-kit/plugin-misc";
 import NFTPlugin from "@solana-agent-kit/plugin-nft";
 import TokenPlugin from "@solana-agent-kit/plugin-token";
+import PaymentsPlugin from "@solana-agent-kit/plugin-payments";
 import { Keypair } from "@solana/web3.js";
 import bs58 from "bs58";
 import * as dotenv from "dotenv";
@@ -51,7 +52,8 @@ async function main() {
     // .use(NFTPlugin)
     .use(DefiPlugin)
     .use(MiscPlugin)
-    .use(BlinksPlugin);
+    .use(BlinksPlugin)
+    .use(PaymentsPlugin);
 
   if (mode === "agent") {
     await aiTests(agent);
