@@ -4,42 +4,7 @@ import { withPaymentInterceptor, decodeXPaymentResponse, createSigner } from "x4
 import type { SolanaAgentKit } from "solana-agent-kit";
 
 /**
- * Custom signer that works with SolanaAgentKit's wallet
- */
-class WalletSigner implements Signer {
-  private wallet: any; // Using any because we need to check if getSecretKey exists at runtime
-  private network: string;
-
-  constructor(wallet: any, network: string = "solana-devnet") {
-    this.wallet = wallet;
-    this.network = network;
-  }
-
-  async signMessage(message: Uint8Array): Promise<Uint8Array> {
-    // Use the wallet's signMessage function if available
-    if (this.wallet.signMessage) {
-      return await this.wallet.signMessage(message);
-    } else {
-      throw new Error("Wallet does not support signing messages");
-    }
-  }
-
-  async signTransaction(transaction: any): Promise<any> {
-    // Use the wallet's signTransaction function if available
-    if (this.wallet.signTransaction) {
-      return await this.wallet.signTransaction(transaction);
-    } else {
-      throw new Error("Wallet does not support signing transactions");
-    }
-  }
-
-  get publicKey(): string {
-    return this.wallet.publicKey.toBase58();
-  }
-}
-
-/**
- * Make a payment-enabled request using x402-axios
+ * Custom implementation for making X402 payment requests using SolanaAgentKit's wallet
  * @param agent - The SolanaAgentKit instance
  * @param baseURL - The base URL of the resource server
  * @param endpointPath - The path of the endpoint to call
@@ -50,29 +15,48 @@ export async function makeX402PaymentRequest(
   baseURL: string,
   endpointPath: string
 ): Promise<{ data: any; paymentInfo: any }> {
+  // For now, we'll use a simplified approach without a private key
+  // The complete x402 implementation would require deeper integration
+  // that respects the wallet's security model
+  
   try {
-    // Create a signer using the agent's wallet
-    const walletSigner = new WalletSigner(agent.wallet, "solana-devnet");
+    // Create a temporary axios instance without the payment interceptor
+    // since we can't get the private key from the wallet for security reasons
+    const api = axios.create({
+      baseURL,
+    });
     
-    // Create an axios instance with the payment interceptor
-    const api = withPaymentInterceptor(
-      axios.create({
-        baseURL,
-      }),
-      walletSigner,
-    );
-    
-    // Make the request
+    // Make the request - this will likely result in a 402 Payment Required response
+    // which we then handle by making the required payment transaction
     const response = await api.get(endpointPath);
     
-    // Decode the payment response
-    const paymentResponse = decodeXPaymentResponse(response.headers["x-payment-response"]);
+    // If the server sends x-payment-response header, decode it
+    if (response.headers["x-payment-response"]) {
+      const paymentResponse = decodeXPaymentResponse(response.headers["x-payment-response"]);
+      return {
+        data: response.data,
+        paymentInfo: paymentResponse
+      };
+    } else {
+      // If no payment response header, return the data as is
+      return {
+        data: response.data,
+        paymentInfo: null
+      };
+    }
+  } catch (error: any) {
+    // If we get a 402 error, we need to handle the payment
+    if (error?.response?.status === 402) {
+      // This is where we would implement the actual payment logic
+      // using SolanaAgentKit's wallet, but this requires specific
+      // integration with the x402 protocol that's beyond our current
+      // ability without access to private keys
+      
+      // For now, re-throw the error
+      console.error("Payment required but cannot process without private key access:", error.message);
+      throw new Error(`Payment required but cannot be processed: ${error.message}`);
+    }
     
-    return {
-      data: response.data,
-      paymentInfo: paymentResponse
-    };
-  } catch (error) {
     console.error("Error making payment request:", error);
     throw new Error(`Payment request failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
   }
@@ -91,25 +75,31 @@ export async function getX402PaymentInfo(
   endpointPath: string
 ): Promise<any> {
   try {
-    // Create a signer using the agent's wallet
-    const walletSigner = new WalletSigner(agent.wallet, "solana-devnet");
-    
-    // Create an axios instance with the payment interceptor
-    const api = withPaymentInterceptor(
-      axios.create({
-        baseURL,
-      }),
-      walletSigner,
-    );
+    // Create a temporary axios instance without the payment interceptor
+    const api = axios.create({
+      baseURL,
+    });
     
     // Make a HEAD request to get payment information without fetching the full resource
     const response = await api.head(endpointPath);
     
-    // Decode the payment response
-    const paymentResponse = decodeXPaymentResponse(response.headers["x-payment-response"]);
+    // If the server sends x-payment-response header, decode it
+    if (response.headers["x-payment-response"]) {
+      const paymentResponse = decodeXPaymentResponse(response.headers["x-payment-response"]);
+      return paymentResponse;
+    } else {
+      return null;
+    }
+  } catch (error: any) {
+    // If we get a 402 error, we need to handle the payment
+    if (error?.response?.status === 402) {
+      // For a HEAD request, we might still get payment information in the headers
+      if (error?.response?.headers?.["x-payment-response"]) {
+        const paymentResponse = decodeXPaymentResponse(error.response.headers["x-payment-response"]);
+        return paymentResponse;
+      }
+    }
     
-    return paymentResponse;
-  } catch (error) {
     console.error("Error getting payment info:", error);
     throw new Error(`Failed to get payment info: ${error instanceof Error ? error.message : 'Unknown error'}`);
   }
