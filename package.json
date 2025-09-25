@@ -17,6 +17,7 @@
     "build:plugin-payments": "turbo run build --filter=@solana-agent-kit/plugin-payments",
     "build:adapter-mcp": "turbo run build --filter=@solana-agent-kit/adapter-mcp",
     "test": "npx tsx test/index.ts",
+    "test:payments": "npx tsx test/plugin-payment-tests/index.ts",
     "docs": "typedoc",
     "generate": "tsx src/utils/keypair.ts",
     "lint": "biome check",

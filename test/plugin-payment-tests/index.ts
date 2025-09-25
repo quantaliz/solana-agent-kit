@@ -1,41 +1,52 @@
-import BlinksPlugin from "@solana-agent-kit/plugin-blinks";
-import DefiPlugin from "@solana-agent-kit/plugin-defi";
-import MiscPlugin from "@solana-agent-kit/plugin-misc";
-import NFTPlugin from "@solana-agent-kit/plugin-nft";
-import TokenPlugin from "@solana-agent-kit/plugin-token";
 import PaymentsPlugin from "@solana-agent-kit/plugin-payments";
+import { Keypair } from "@solana/web3.js";
+import bs58 from "bs58";
+import * as dotenv from "dotenv";
+import { KeypairWallet, SolanaAgentKit } from "solana-agent-kit";
 import paymentsTests from "./payments";
-import { SolanaAgentKit } from "solana-agent-kit";
 
-export default async function (agentKit: SolanaAgentKit) {
-  const agent = agentKit
-    .use(TokenPlugin)
-    .use(NFTPlugin)
-    .use(DefiPlugin)
-    .use(MiscPlugin)
-    .use(BlinksPlugin)
+dotenv.config();
+
+function validateEnvironment(): void {
+  const missingVars: string[] = [];
+  const requiredVars = ["RPC_URL", "SOLANA_PRIVATE_KEY"];
+
+  requiredVars.forEach((varName) => {
+    if (!process.env[varName]) {
+      missingVars.push(varName);
+    }
+  });
+
+  if (missingVars.length > 0) {
+    console.error("Error: Required environment variables are not set");
+    missingVars.forEach((varName) => {
+      console.error(`${varName}=your_${varName.toLowerCase()}_here`);
+    });
+    process.exit(1);
+  }
+}
+
+validateEnvironment();
+
+async function main() {
+  const keyPair = Keypair.fromSecretKey(
+    bs58.decode(process.env.SOLANA_PRIVATE_KEY as string),
+  );
+  const wallet = new KeypairWallet(keyPair, process.env.RPC_URL as string);
+
+  // Initialize agent with your test wallet
+  const agent = new SolanaAgentKit(wallet, process.env.RPC_URL!, {
+    OPENAI_API_KEY: process.env.OPENAI_API_KEY,
+  })
+    // Load only the payments plugin for this test
     .use(PaymentsPlugin);
 
-  // Test a method
-  console.log("Testing Token Plugin...");
-  const tokenData = await agent.methods.getAsset(
-    agent,
-    "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
-  );
-  console.log("USDC Token Data:", tokenData);
-
-  console.log("Testing NFT Plugin...");
-  // Add your NFT plugin test here
-
-  console.log("Testing DeFi Plugin...");
-  // Add your DeFi plugin test here
-
-  console.log("Testing Misc Plugin...");
-  // Add your misc plugin test here
-
-  console.log("Testing Blinks Plugin...");
-  // Add your blinks plugin test here
-
-  console.log("Testing Payments Plugin...");
-  await paymentsTests(agentKit);
+  await paymentsTests(agent);
 }
+
+main()
+  .then(() => console.log("Payment tests completed successfully!"))
+  .catch((error) => {
+    console.error("Error during payment tests:", error);
+    process.exit(1);
+  });
