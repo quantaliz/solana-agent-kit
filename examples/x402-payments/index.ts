@@ -62,13 +62,20 @@ async function main() {
   console.log("📋 Example: Making an X402 Payment Request");
   console.log("   This will attempt to access a resource that requires payment via x402 protocol");
   
+  // Get the resource server URL and endpoint path from environment variables
+  const resourceServerUrl = process.env.RESOURCE_SERVER_URL || "https://x402.mock";
+  const endpointPath = process.env.ENDPOINT_PATH || "/protected-resource";
+  
+  console.log(`   Using server: ${resourceServerUrl}`);
+  console.log(`   Using endpoint: ${endpointPath}`);
+
   try {
     // This example makes a payment request to a protected resource
     // The x402 protocol will automatically handle payment if required
     const result = await agent.methods.makeX402PaymentRequest(
       agent, 
-      "https://x402.mock", 
-      "/protected-resource"
+      resourceServerUrl, 
+      endpointPath
     );
 
     console.log("✅ X402 Payment Request Successful!");
@@ -76,7 +83,7 @@ async function main() {
     console.log("   Data received:", JSON.stringify(result.data, null, 2));
     console.log("   Payment info:", JSON.stringify(result.paymentInfo, null, 2));
   } catch (error) {
-    console.log("⚠️  X402 Payment Request failed (expected in test environment):", error instanceof Error ? error.message : String(error));
+    console.log("⚠️  X402 Payment Request failed:", error instanceof Error ? error.message : String(error));
   }
 
   // 4. GET PAYMENT INFO EXAMPLE
@@ -87,37 +94,55 @@ async function main() {
   try {
     const info = await agent.methods.getX402PaymentInfo(
       agent,
-      "https://x402.mock", 
-      "/protected-resource"
+      resourceServerUrl, 
+      endpointPath
     );
 
     console.log("✅ X402 Payment Info Retrieved!");
     console.log("   Challenge:", info.challenge ? JSON.stringify(info.challenge, null, 2) : "None");
     console.log("   Payment Response:", info.paymentResponse ? JSON.stringify(info.paymentResponse, null, 2) : "None");
   } catch (error) {
-    console.log("⚠️  X402 Payment Info Request failed (expected in test environment):", error instanceof Error ? error.message : String(error));
+    console.log("⚠️  X402 Payment Info Request failed:", error instanceof Error ? error.message : String(error));
   }
 
   // 5. AI INTEGRATION EXAMPLE
   // --------------------------
   // Show how to integrate with AI frameworks using Vercel AI SDK
-  console.log("\n📋 Example: AI Integration with Payment Tools");
+  console.log("\\n📋 Example: AI Integration with Payment Tools");
   
-  // Create tools for AI frameworks to use payment functionality
-  const tools = createVercelAITools(agent, agent.actions);
-  
-  // Find x402 payment related tools
-  const x402Tools = tools.filter(tool => 
-    tool.name.includes('x402') || tool.name.includes('payment')
-  );
-  
-  console.log("✅ Created AI tools for payment functionality");
-  console.log("   Available X402 tools:", x402Tools.map(t => t.name).join(", "));
-  
-  // Example of how an AI agent might use the payment tool
-  console.log("\n💡 Example AI usage:");
-  console.log("   An AI agent can now use the 'x402_payment_request' tool to automatically");
-  console.log("   pay for access to protected APIs that implement the x402 standard.");
+  try {
+    // Create tools for AI frameworks to use payment functionality
+    const tools = createVercelAITools(agent, agent.actions);
+    
+    // Check if tools is an array or object and handle accordingly
+    let x402Tools = [];
+    if (Array.isArray(tools)) {
+      // Find x402 payment related tools
+      x402Tools = tools.filter(tool => 
+        tool.name && (tool.name.includes('x402') || tool.name.includes('payment'))
+      );
+    } else if (tools && typeof tools === 'object') {
+      // If it's an object, convert to array and then filter
+      const toolArray = Object.values(tools);
+      x402Tools = toolArray.filter(tool => 
+        tool && tool.name && (tool.name.includes('x402') || tool.name.includes('payment'))
+      );
+    }
+    
+    console.log("✅ Created AI tools for payment functionality");
+    if (x402Tools.length > 0) {
+      console.log("   Available X402 tools:", x402Tools.map(t => t.name).join(", "));
+    } else {
+      console.log("   Available X402 tools: None found in the current toolset");
+    }
+    
+    // Example of how an AI agent might use the payment tool
+    console.log("\\n💡 Example AI usage:");
+    console.log("   An AI agent can now use the 'x402_payment_request' tool to automatically");
+    console.log("   pay for access to protected APIs that implement the x402 standard.");
+  } catch (error) {
+    console.log("⚠️  AI Integration failed:", error instanceof Error ? error.message : String(error));
+  }
   
   console.log("\n🎉 X402 Payment Example Completed!");
   console.log("\n📝 Key Functions Demonstrated:");

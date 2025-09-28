@@ -11,19 +11,20 @@
   "exports": {
     ".": {
       "import": {
-        "types": "dist/index.d.ts",
-        "default": "dist/index.js"
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
       },
       "require": {
-        "types": "dist/index.d.cts",
-        "default": "dist/index.cjs"
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
       }
     }
   },
   "description": "make payments with x402 between ai agents using solana",
   "scripts": {
     "clean": "rm -rf dist .turbo node_modules",
-    "build": "tsup src/index.ts --dts --clean --format cjs,esm --out-dir dist",
+    "build": "tsup src/index.ts --clean --format cjs,esm --out-dir dist",
+    "build:types": "tsup src/index.ts --dts --clean --format cjs,esm --out-dir dist",
     "test": "jest",
     "test:run": "tsx ../../../test/plugin-payment-tests/index.ts"
   },
