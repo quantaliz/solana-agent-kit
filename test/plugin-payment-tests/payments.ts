@@ -38,8 +38,127 @@ async function withMockedFetch<T>(expectations: FetchExpectation[], fn: () => Pr
   let callIndex = 0;
 
   globalThis.fetch = (async (requestInfo: RequestInfo, init?: RequestInit): Promise<Response> => {
+    const url = toUrlString(requestInfo);
+    
+    // Check if this is a Solana RPC call (should return mock data)
+    const isSolanaRpcCall = url.includes('solana.com') || url.includes('localhost') || url.includes('127.0.0.1') || url.includes('9999'); // Include our mock URL
+    
+    if (isSolanaRpcCall) {
+      // Handle Solana RPC calls with mock responses
+      // Parse the request body to determine the method
+      const body = init?.body ? JSON.parse(init.body as string) : {};
+      const method = body?.method;
+      
+      // Check if this is a getAccountInfo call for a specific address
+      if (method === 'getAccountInfo') {
+        const address = body?.params?.[0];
+        
+        // For the token mint account, we need to return properly formatted account data
+        // that can be decoded as a Mint account by the x402 library
+        
+        // Solana Mint account layout:
+        // [0]    - isInitialized: u8 (1 byte)
+        // [1]    - decimals: u8 (1 byte) 
+        // [2]    - mintAuthorityOption: u8 (1 byte) - 0 = None, 1 = Option< Pubkey >
+        // [3-34] - mintAuthority: [u8; 32] (32 bytes if option = 1)
+        // [35-42]- supply: u64 (8 bytes)
+        // [43]   - freezeAuthorityOption: u8 (1 byte)
+        // [44-75] or [] - freezeAuthority: [u8; 32] (32 bytes if option = 1)
+        
+        // Create buffer with the proper layout
+        const buffer = new ArrayBuffer(82); // Minimum size for a mint with authorities
+        const view = new DataView(buffer);
+        const mintData = new Uint8Array(buffer);
+        
+        // isInitialized = true
+        view.setUint8(0, 1);
+        // decimals = 9 
+        view.setUint8(1, 9);
+        // mintAuthorityOption = 1 (has authority)
+        view.setUint8(2, 1);
+        // Set the mint authority to some valid public key bytes (all zeros for test)
+        mintData.fill(0, 3, 35);
+        // supply = 1000000000 (as an example)
+        view.setBigUint64(35, BigInt(1000000000), true); // little endian
+        // freezeAuthorityOption = 0 (no freeze authority)
+        view.setUint8(43, 0);
+        
+        const base64Data = Buffer.from(mintData).toString('base64');
+
+        const mockAccountData = {
+          "jsonrpc": "2.0",
+          "result": {
+            "context": {"slot": 123456789},
+            "value": {
+              "data": [base64Data, "base64"],
+              "executable": false,
+              "lamports": 1000000000,
+              "owner": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", // Token-2022 Program
+              "rentEpoch": 0
+            }
+          },
+          "id": body.id
+        };
+        
+        return new Response(JSON.stringify(mockAccountData), {
+          status: 200,
+          headers: { "content-type": "application/json" }
+        });
+      } else if (method === 'getLatestBlockhash') {
+        const mockBlockhash = {
+          "jsonrpc": "2.0",
+          "result": {
+            "context": {"slot": 123456789},
+            "value": {
+              "blockhash": "Eays7J49DZD76X1PLH8UKgPq2CZfj9121R817qBQ6412",
+              "lastValidBlockHeight": 123456790
+            }
+          },
+          "id": body.id
+        };
+        return new Response(JSON.stringify(mockBlockhash), {
+          status: 200,
+          headers: { "content-type": "application/json" }
+        });
+      } else if (method === 'simulateTransaction') {
+        // Handle the transaction simulation call
+        const mockSimulationResult = {
+          "jsonrpc": "2.0",
+          "result": {
+            "context": {"slot": 123456789},
+            "value": {
+              "err": null,  // No error in simulation
+              "logs": [],
+              "accounts": null,
+              "unitsConsumed": 123456,
+              "returnData": null
+            }
+          },
+          "id": body.id
+        };
+        return new Response(JSON.stringify(mockSimulationResult), {
+          status: 200,
+          headers: { "content-type": "application/json" }
+        });
+      } else {
+        // For other methods, return a generic mock response
+        return new Response(JSON.stringify({
+          "jsonrpc": "2.0", 
+          "result": {
+            "context": {"slot": 123456789},
+            "value": method === 'getSlot' ? 123456789 : {}  // Special case for getSlot
+          },
+          "id": body.id
+        }), {
+          status: 200,
+          headers: { "content-type": "application/json" }
+        });
+      }
+    }
+    
+    // Handle expected x402 HTTP requests
     const expectation = expectations[callIndex];
-    assert.ok(expectation, `Unexpected fetch call for ${toUrlString(requestInfo)}`);
+    assert.ok(expectation, `Unexpected fetch call for ${url}`);
 
     expectation.assert(requestInfo, init);
     callIndex += 1;
@@ -66,11 +185,20 @@ function buildRequirement(payTo: string): PaymentRequirements {
     outputSchema: undefined,
     payTo,
     maxTimeoutSeconds: 30,
-    asset: payTo,
-    extra: { memo: "unit-test" },
+    asset: "So11111111111111111111111111111111111111112", // Native SOL address
+    extra: { 
+      memo: "unit-test",
+      feePayer: payTo  // Add the required feePayer field
+    },
   };
 
-  return PaymentRequirementsSchema.parse(requirementInput);
+  // Remove undefined outputSchema as Zod schema might strip it
+  const parsed = PaymentRequirementsSchema.parse(requirementInput);
+  if (parsed.outputSchema === undefined) {
+    delete (parsed as any).outputSchema;
+  }
+  
+  return parsed;
 }
 
 function encodePaymentResponse(response: Record<string, unknown>): string {

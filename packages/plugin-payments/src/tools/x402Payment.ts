@@ -4,8 +4,7 @@ import { createKeyPairSignerFromBytes } from "@solana/signers";
 import {
   createPaymentHeader,
   selectPaymentRequirements,
-  x402Version as DEFAULT_X402_VERSION,
-} from "x402";
+} from "x402/client";
 import { decodeXPaymentResponse } from "x402/shared";
 import {
   PaymentRequirementsSchema,
@@ -14,6 +13,9 @@ import {
   type Signer,
 } from "x402/types";
 import { KeypairWallet, type SolanaAgentKit } from "solana-agent-kit";
+
+// Define default x402 version locally since it's not exported from the client module
+const DEFAULT_X402_VERSION = 1;
 
 const SVM_NETWORKS: Network[] = ["solana", "solana-devnet"];
 const signerCache = new WeakMap<SolanaAgentKit, Promise<Signer>>();

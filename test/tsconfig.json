@@ -1,16 +1,19 @@
 {
-  "extends": "../tsconfig.json",
   "compilerOptions": {
-    "outDir": "./dist",
-    "baseUrl": ".",
-    "paths": {
-      "solana-agent-kit": ["../packages/core/src"],
-      "@solana-agent-kit/*": ["../packages/*/src"],
-      "x402": ["../packages/plugin-payments/node_modules/x402/dist/esm/index.d.mts"],
-      "x402/shared": ["../packages/plugin-payments/node_modules/x402/dist/esm/shared/index.d.mts"],
-      "x402/types": ["../packages/plugin-payments/node_modules/x402/dist/esm/types/index.d.mts"]
-    }
+    "target": "es2020",
+    "lib": ["es2020", "DOM", "DOM.Iterable"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "useDefineForClassFields": true,
+    "isolatedModules": true,
+    "types": ["node"]
   },
-  "include": ["./**/*"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["plugin-payment-tests/**/*"],
+  "exclude": ["node_modules"]
 }

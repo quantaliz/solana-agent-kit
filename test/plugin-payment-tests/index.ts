@@ -18,12 +18,13 @@ function createKeypair(): Keypair {
 }
 
 async function main() {
-  const rpcUrl = process.env.RPC_URL ?? "https://api.devnet.solana.com";
+  // Use a mock URL to prevent actual blockchain calls during x402 testing
+  const mockRpcUrl = "http://localhost:9999"; // Using a non-existent RPC to mock behavior
   const keyPair = createKeypair();
-  const walletKeypair = keyPair as unknown as ConstructorParameters<typeof KeypairWallet>[0];
-  const wallet = new KeypairWallet(walletKeypair, rpcUrl);
+  // Ensure we're passing the keypair directly to KeypairWallet
+  const wallet = new KeypairWallet(keyPair, mockRpcUrl);
 
-  const agent = new SolanaAgentKit(wallet, rpcUrl, {
+  const agent = new SolanaAgentKit(wallet, mockRpcUrl, {
     OPENAI_API_KEY: process.env.OPENAI_API_KEY,
   }).use(PaymentsPlugin);
 
