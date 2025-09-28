@@ -2,6 +2,16 @@
 
 # Solana Agent Kit
 
+## ⚠️ FORK NOTICE: This is a fork of the original repository created for the "hackaroo" hackathon
+
+**Original Repository**: [https://github.com/sendaifun/solana-agent-kit](https://github.com/sendaifun/solana-agent-kit)
+
+This fork has been modified to enhance specific functionality for hackathon projects. The primary changes include:
+
+- Addition of `@solana-agent-kit/plugin-payments` for x402-based payments between AI agents
+- Enhanced payment and transaction capabilities for AI agent interactions
+- Updated documentation and examples for hackathon use cases
+
 ![SAKCover2](https://github.com/user-attachments/assets/a6072421-8958-4cee-934a-a10ea32ae75e)
 
 [![NPM Downloads](https://img.shields.io/npm/dm/solana-agent-kit?style=for-the-badge)](https://www.npmjs.com/package/solana-agent-kit)
@@ -126,9 +136,10 @@ You can choose to install any of the plugins listed below or you could choose to
 3. DeFi plugin (`@solana-agent-kit/plugin-defi`): DeFi operations for Solana protocols such as staking, lending, borrowing, and spot and perpetual trading.
 4. Misc plugin (`@solana-agent-kit/plugin-misc`): Miscellaneous operations such as airdrops, price feeds, coingecko token information, and domain registration.
 5. Blinks plugin (`@solana-agent-kit/plugin-blinks`): Blinks operations for Solana protocols such as arcade games and more soon to come.
+6. **hackaroo special**: Payments plugin (`@solana-agent-kit/plugin-payments`): Make x402-based payments between AI agents using Solana blockchain for protected API access and service payments.
 
 ```bash
-npm install @solana-agent-kit/plugin-token @solana-agent-kit/plugin-nft @solana-agent-kit/plugin-defi @solana-agent-kit/plugin-misc @solana-agent-kit/plugin-blinks
+npm install @solana-agent-kit/plugin-token @solana-agent-kit/plugin-nft @solana-agent-kit/plugin-defi @solana-agent-kit/plugin-misc @solana-agent-kit/plugin-blinks @solana-agent-kit/plugin-payments
 ```
 
 ## Quick Start
@@ -165,6 +176,51 @@ const tools = createVercelAITools(agent, agent.actions);
 ```
 
 You can also make use of the wallet interface provided by the Solana wallet adapter for embedded wallets.
+
+## Using the Payments Plugin for x402-based AI Agent Payments
+
+The hackaroo-special `plugin-payments` enables x402-based payments between AI agents using the Solana blockchain. This allows agents to pay for protected API access and services automatically.
+
+```typescript
+import { SolanaAgentKit, createVercelAITools, KeypairWallet } from "solana-agent-kit";
+import TokenPlugin from "@solana-agent-kit/plugin-token";
+import PaymentsPlugin from "@solana-agent-kit/plugin-payments"; // Import the payments plugin
+
+const keyPair = Keypair.fromSecretKey(bs58.decode("YOUR_SECRET_KEY"))
+const wallet = new KeypairWallet(keyPair)
+
+// Initialize with private key and optional RPC URL
+const agent = new SolanaAgentKit(
+  wallet,
+  "YOUR_RPC_URL",
+  {
+    OPENAI_API_KEY: "YOUR_OPENAI_API_KEY",
+  }
+) // Add the plugins you would like to use
+  .use(TokenPlugin)
+  .use(PaymentsPlugin); // Add the payments plugin
+
+// Create tools for AI framework
+const tools = createVercelAITools(agent, agent.actions);
+
+// Make x402-protected requests - the agent will automatically pay when required
+const result = await agent.methods.makeX402PaymentRequest(
+  agent,
+  "https://api.example.com",  // base URL
+  "/protected-endpoint"       // endpoint path
+);
+
+console.log("Payment request result:", result);
+
+// Or get payment info for a protected endpoint without executing the payment
+const paymentInfo = await agent.methods.getX402PaymentInfo(
+  agent,
+  "https://api.example.com",  // base URL
+  "/protected-endpoint"       // endpoint path
+);
+
+console.log("Payment info:", paymentInfo);
+```
 
 ## Usage Examples Using Tools From The Token, Defi, and Other Plugins
 
@@ -634,6 +690,7 @@ const value = await agent.methods.simulateSwitchboardFeed(
       "9wcBMATS8bGLQ2UcRuYjsRAD7TPqB1CMhqfueBx78Uj2", // TRUMP/USD
       "http://crossbar.switchboard.xyz");;
 console.log("Simulation resulted in the following value:", value);
+```
 
 ### Cross-Chain Bridge via deBridge
 
