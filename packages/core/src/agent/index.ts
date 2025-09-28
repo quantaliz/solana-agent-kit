@@ -1,6 +1,6 @@
 import { Connection } from "@solana/web3.js";
 import type { Action, Config, Plugin } from "../types";
-import { BaseWallet } from "../types/wallet";
+import { BaseWallet, EvmWallet } from "../types/wallet";
 
 /**
  * Defines a type that merges all plugin methods into the `methods` object
@@ -30,7 +30,14 @@ type PluginMethods<T> = T extends Plugin ? T["methods"] : Record<string, never>;
  *  signAllTransactions: async (txs) => {},
  *  sendTransaction: async (tx) => {},
  *  publicKey: "SomePublicKey",
- * }, "<rpcUrl>", {});
+ * }, "<rpcUrl>", {}, {
+ *  address: "SomeEVMAddress",
+ *  getAddress: async () => "SomeEVMAddress",
+ *  signMessage: async (message) => "signedMessage",
+ *  signTransaction: async (tx) => "signedTx",
+ *  sendTransaction: async (rawSignedTx) => "txHash",
+ *  _signTypedData: async (domain, types, message) => "signedTypedData",
+ * });
  *
  * @example
  * // Add plugin
@@ -44,15 +51,22 @@ export class SolanaAgentKit<TPlugins = Record<string, never>> {
   public connection: Connection;
   public config: Config;
   public wallet: BaseWallet;
+  public evmWallet?: EvmWallet;
   private plugins: Map<string, Plugin> = new Map();
 
   public methods: TPlugins = {} as TPlugins;
   public actions: Action[] = [];
 
-  constructor(wallet: BaseWallet, rpc_url: string, config: Config) {
+  constructor(
+    wallet: BaseWallet,
+    rpc_url: string,
+    config: Config,
+    evmWallet?: EvmWallet,
+  ) {
     this.connection = new Connection(rpc_url);
     this.wallet = wallet;
     this.config = config;
+    this.evmWallet = evmWallet;
   }
 
   /**

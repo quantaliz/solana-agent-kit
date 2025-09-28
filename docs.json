@@ -80,6 +80,10 @@
             "pages": ["docs/v2/devrel-agents/jito"]
           },
           {
+            "group": "Fraction Protocol",
+            "pages": ["docs/v2/fraction/intro", "docs/v2/fraction/sdk"]
+          },
+          {
             "group": "Integrations",
             "pages": [
               {
