@@ -64,15 +64,15 @@
   "dependencies": {
     "@langchain/core": "^0.3.44",
     "@openai/agents": "^0.0.7",
+    "@solana/signers": "^2.3.0",
     "@solana/spl-token": "^0.4.13",
     "@solana/web3.js": "^1.98.2",
-    "x402-axios": "^0.6.0",
-    "axios": "^1.7.9",
     "ai": "^4.1.5",
     "bs58": "^6.0.0",
     "rpc-websockets": "^10.0.0",
     "solana-agent-kit": "workspace:*",
     "tweetnacl": "^1.0.3",
+    "x402": "^0.6.1",
     "zod": "^3.24.1"
   }
 }
