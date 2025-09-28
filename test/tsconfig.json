@@ -5,7 +5,10 @@
     "baseUrl": ".",
     "paths": {
       "solana-agent-kit": ["../packages/core/src"],
-      "@solana-agent-kit/*": ["../packages/*/src"]
+      "@solana-agent-kit/*": ["../packages/*/src"],
+      "x402": ["../packages/plugin-payments/node_modules/x402/dist/esm/index.d.mts"],
+      "x402/shared": ["../packages/plugin-payments/node_modules/x402/dist/esm/shared/index.d.mts"],
+      "x402/types": ["../packages/plugin-payments/node_modules/x402/dist/esm/types/index.d.mts"]
     }
   },
   "include": ["./**/*"],

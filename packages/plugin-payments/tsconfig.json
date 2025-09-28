@@ -2,7 +2,14 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "./dist",
-    "rootDir": "./src"
+    "rootDir": "./src",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "paths": {
+      "x402": ["packages/plugin-payments/node_modules/x402/dist/esm/index.d.mts"],
+      "x402/shared": ["packages/plugin-payments/node_modules/x402/dist/esm/shared/index.d.mts"],
+      "x402/types": ["packages/plugin-payments/node_modules/x402/dist/esm/types/index.d.mts"]
+    }
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]

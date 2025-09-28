@@ -1,4 +1,4 @@
-import PaymentsPlugin from "@solana-agent-kit/plugin-payments";
+import PaymentsPlugin from "../../packages/plugin-payments/src/index";
 import { Keypair } from "@solana/web3.js";
 import bs58 from "bs58";
 import * as dotenv from "dotenv";
@@ -7,39 +7,25 @@ import paymentsTests from "./payments";
 
 dotenv.config();
 
-function validateEnvironment(): void {
-  const missingVars: string[] = [];
-  const requiredVars = ["RPC_URL", "SOLANA_PRIVATE_KEY"];
-
-  requiredVars.forEach((varName) => {
-    if (!process.env[varName]) {
-      missingVars.push(varName);
-    }
-  });
-
-  if (missingVars.length > 0) {
-    console.error("Error: Required environment variables are not set");
-    missingVars.forEach((varName) => {
-      console.error(`${varName}=your_${varName.toLowerCase()}_here`);
-    });
-    process.exit(1);
+function createKeypair(): Keypair {
+  const secret = process.env.SOLANA_PRIVATE_KEY;
+  if (secret) {
+    return Keypair.fromSecretKey(bs58.decode(secret));
   }
+
+  console.warn("SOLANA_PRIVATE_KEY not set; generating an ephemeral keypair for tests.");
+  return Keypair.generate();
 }
 
-validateEnvironment();
-
 async function main() {
-  const keyPair = Keypair.fromSecretKey(
-    bs58.decode(process.env.SOLANA_PRIVATE_KEY as string),
-  );
-  const wallet = new KeypairWallet(keyPair, process.env.RPC_URL as string);
+  const rpcUrl = process.env.RPC_URL ?? "https://api.devnet.solana.com";
+  const keyPair = createKeypair();
+  const walletKeypair = keyPair as unknown as ConstructorParameters<typeof KeypairWallet>[0];
+  const wallet = new KeypairWallet(walletKeypair, rpcUrl);
 
-  // Initialize agent with your test wallet
-  const agent = new SolanaAgentKit(wallet, process.env.RPC_URL!, {
+  const agent = new SolanaAgentKit(wallet, rpcUrl, {
     OPENAI_API_KEY: process.env.OPENAI_API_KEY,
-  })
-    // Load only the payments plugin for this test
-    .use(PaymentsPlugin);
+  }).use(PaymentsPlugin);
 
   await paymentsTests(agent);
 }
