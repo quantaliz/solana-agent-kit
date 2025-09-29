@@ -1,19 +1,13 @@
 {
+  "extends": "../tsconfig.json",
   "compilerOptions": {
-    "target": "es2020",
-    "lib": ["es2020", "DOM", "DOM.Iterable"],
-    "module": "esnext",
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-    "strict": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
-    "useDefineForClassFields": true,
-    "isolatedModules": true,
-    "types": ["node"]
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "solana-agent-kit": ["../packages/core/src"],
+      "@solana-agent-kit/*": ["../packages/*/src"]
+    }
   },
-  "include": ["plugin-payment-tests/**/*"],
-  "exclude": ["node_modules"]
+  "include": ["./**/*"],
+  "exclude": ["node_modules", "dist"]
 }

@@ -142,6 +142,7 @@ You can choose to install any of the plugins listed below or you could choose to
 npm install @solana-agent-kit/plugin-token @solana-agent-kit/plugin-nft @solana-agent-kit/plugin-defi @solana-agent-kit/plugin-misc @solana-agent-kit/plugin-blinks @solana-agent-kit/plugin-payments
 ```
 
+NOTE: If you are having troubles compiling because of "Out-of-Memory", use `NODE_OPTIONS="--max-old-space-size=6144"`
 ## Quick Start
 
 Initializing the wallet interface and agent with plugins:

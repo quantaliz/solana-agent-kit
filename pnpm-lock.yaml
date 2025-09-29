@@ -72,7 +72,7 @@ importers:
         specifier: ^6.2.1
         version: 6.2.1(rollup@4.36.0)(typescript@5.7.2)
       tsup:
-        specifier: ^8.5.0
+        specifier: ^8.4.0
         version: 8.5.0(jiti@2.4.2)(postcss@8.5.3)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.7.1)
       tsx:
         specifier: ^4.19.2
@@ -95,6 +95,15 @@ importers:
       '@modelcontextprotocol/sdk':
         specifier: ^1.7.0
         version: 1.7.0
+      bs58:
+        specifier: ^5.0.0
+        version: 5.0.0
+      bs58check:
+        specifier: 3.0.1
+        version: 3.0.1
+      decimal.js:
+        specifier: ^10.5.0
+        version: 10.5.0
       solana-agent-kit:
         specifier: workspace:*
         version: link:../core
@@ -106,10 +115,10 @@ importers:
     dependencies:
       '@langchain/core':
         specifier: ^0.3.44
-        version: 0.3.44(openai@5.3.0(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.24.1))
+        version: 0.3.44(openai@5.3.0(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.24.1))
       '@openai/agents':
         specifier: ^0.0.7
-        version: 0.0.7(bufferutil@4.0.9)(utf-8-validate@5.0.10)(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.24.1)
+        version: 0.0.7(bufferutil@4.0.9)(utf-8-validate@5.0.10)(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.24.1)
       '@solana/spl-token':
         specifier: ^0.4.13
         version: 0.4.13(@solana/web3.js@1.98.2(bufferutil@4.0.9)(encoding@0.1.13)(typescript@5.7.2)(utf-8-validate@5.0.10))(bufferutil@4.0.9)(encoding@0.1.13)(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.7.2)(utf-8-validate@5.0.10)
@@ -122,6 +131,9 @@ importers:
       bs58:
         specifier: ^6.0.0
         version: 6.0.0
+      decimal.js:
+        specifier: ^10.5.0
+        version: 10.5.0
       rpc-websockets:
         specifier: ^10.0.0
         version: 10.0.0
@@ -174,6 +186,15 @@ importers:
       '@solana/web3.js':
         specifier: ^1.98.2
         version: 1.98.2(bufferutil@4.0.9)(encoding@0.1.13)(typescript@5.8.3)(utf-8-validate@5.0.10)
+      bs58:
+        specifier: ^5.0.0
+        version: 5.0.0
+      bs58check:
+        specifier: 3.0.1
+        version: 3.0.1
+      decimal.js:
+        specifier: ^10.5.0
+        version: 10.5.0
       rpc-websockets:
         specifier: ^10.0.0
         version: 10.0.0
@@ -303,6 +324,12 @@ importers:
       bs58:
         specifier: ^6.0.0
         version: 6.0.0
+      bs58check:
+        specifier: 3.0.1
+        version: 3.0.1
+      decimal.js:
+        specifier: ^10.5.0
+        version: 10.5.0
       redaxios:
         specifier: ^0.5.1
         version: 0.5.1
@@ -366,6 +393,12 @@ importers:
       bn.js:
         specifier: ^5.2.1
         version: 5.2.1
+      bs58:
+        specifier: ^5.0.0
+        version: 5.0.0
+      decimal.js:
+        specifier: ^10.5.0
+        version: 10.5.0
       redaxios:
         specifier: ^0.5.1
         version: 0.5.1
@@ -511,6 +544,15 @@ importers:
       bn.js:
         specifier: ^5.2.1
         version: 5.2.1
+      bs58:
+        specifier: ^5.0.0
+        version: 5.0.0
+      bs58check:
+        specifier: 3.0.1
+        version: 3.0.1
+      decimal.js:
+        specifier: ^10.5.0
+        version: 10.5.0
       ethers:
         specifier: ^6.13.5
         version: 6.13.5(bufferutil@4.0.9)(utf-8-validate@5.0.10)
@@ -541,16 +583,16 @@ importers:
         version: 1.3.20(zod@3.25.63)
       '@langchain/core':
         specifier: ^0.3.44
-        version: 0.3.44(openai@5.3.0(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63))
+        version: 0.3.44(openai@5.3.0(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63))
       '@langchain/langgraph':
         specifier: ^0.2.63
-        version: 0.2.67(@langchain/core@0.3.44(openai@5.3.0(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63)))(react@19.0.0)(zod-to-json-schema@3.24.1(zod@3.25.63))
+        version: 0.2.67(@langchain/core@0.3.44(openai@5.3.0(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63)))(react@19.0.0)(zod-to-json-schema@3.24.1(zod@3.25.63))
       '@langchain/openai':
         specifier: ^0.5.5
-        version: 0.5.7(@langchain/core@0.3.44(openai@5.3.0(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63)))(encoding@0.1.13)(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))
+        version: 0.5.7(@langchain/core@0.3.44(openai@5.3.0(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63)))(encoding@0.1.13)(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))
       '@openai/agents':
         specifier: ^0.0.7
-        version: 0.0.7(bufferutil@4.0.9)(utf-8-validate@5.0.10)(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63)
+        version: 0.0.7(bufferutil@4.0.9)(utf-8-validate@5.0.10)(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63)
       '@solana-agent-kit/plugin-blinks':
         specifier: workspace:*
         version: link:../packages/plugin-blinks
@@ -580,17 +622,11 @@ importers:
         version: 16.4.7
       openai:
         specifier: ^5.3.0
-        version: 5.3.0(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63)
+        version: 5.3.0(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63)
       solana-agent-kit:
         specifier: workspace:*
         version: link:../packages/core
     devDependencies:
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@22.15.18)(typescript@5.7.3)
-      tsconfig-paths:
-        specifier: ^4.2.0
-        version: 4.2.0
       tsx:
         specifier: ^4.19.2
         version: 4.19.3
@@ -3978,6 +4014,9 @@ packages:
 
   bs58check@2.1.2:
     resolution: {integrity: sha512-0TS1jicxdU09dwJMNZtVAfzPi6Q6QeN0pM1Fkzrjn+XYHvzMKPU3pHVpva+769iNVSfIYWf7LJ6WR+BuuMf8cA==}
+
+  bs58check@3.0.1:
+    resolution: {integrity: sha512-hjuuJvoWEybo7Hn/0xOrczQKKEKD63WguEjlhLExYs2wUBcebDC1jDNK17eEAD2lYfw82d5ASC1d7K3SWszjaQ==}
 
   buffer-layout@1.2.2:
     resolution: {integrity: sha512-kWSuLN694+KTk8SrYvCqwP2WcgQjoRCiF5b4QDvkkz8EmgD+aWAIceGFKMIAdmF/pH+vpgNV3d3kAKorcdAmWA==}
@@ -8102,7 +8141,7 @@ snapshots:
       '@aptos-labs/aptos-cli': 1.0.2
       '@aptos-labs/aptos-client': 0.1.1
       '@noble/curves': 1.8.2
-      '@noble/hashes': 1.7.2
+      '@noble/hashes': 1.8.0
       '@scure/bip32': 1.6.2
       '@scure/bip39': 1.5.4
       eventemitter3: 5.0.1
@@ -9622,31 +9661,14 @@ snapshots:
 
   '@jup-ag/api@6.0.39': {}
 
-  '@langchain/core@0.3.44(openai@5.3.0(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63))':
+  '@langchain/core@0.3.44(openai@5.3.0(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.24.1))':
     dependencies:
       '@cfworker/json-schema': 4.1.1
       ansi-styles: 5.2.0
       camelcase: 6.3.0
       decamelize: 1.2.0
       js-tiktoken: 1.0.19
-      langsmith: 0.3.15(openai@5.3.0(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63))
-      mustache: 4.2.0
-      p-queue: 6.6.2
-      p-retry: 4.6.2
-      uuid: 10.0.0
-      zod: 3.25.63
-      zod-to-json-schema: 3.24.1(zod@3.25.63)
-    transitivePeerDependencies:
-      - openai
-
-  '@langchain/core@0.3.44(openai@5.3.0(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.24.1))':
-    dependencies:
-      '@cfworker/json-schema': 4.1.1
-      ansi-styles: 5.2.0
-      camelcase: 6.3.0
-      decamelize: 1.2.0
-      js-tiktoken: 1.0.19
-      langsmith: 0.3.15(openai@5.3.0(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.24.1))
+      langsmith: 0.3.15(openai@5.3.0(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.24.1))
       mustache: 4.2.0
       p-queue: 6.6.2
       p-retry: 4.6.2
@@ -9673,26 +9695,26 @@ snapshots:
     transitivePeerDependencies:
       - openai
 
-  '@langchain/langgraph-checkpoint@0.0.17(@langchain/core@0.3.44(openai@5.3.0(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63)))':
+  '@langchain/langgraph-checkpoint@0.0.17(@langchain/core@0.3.44(openai@5.3.0(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63)))':
     dependencies:
-      '@langchain/core': 0.3.44(openai@5.3.0(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63))
+      '@langchain/core': 0.3.44(openai@5.3.0(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63))
       uuid: 10.0.0
 
-  '@langchain/langgraph-sdk@0.0.70(@langchain/core@0.3.44(openai@5.3.0(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63)))(react@19.0.0)':
+  '@langchain/langgraph-sdk@0.0.70(@langchain/core@0.3.44(openai@5.3.0(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63)))(react@19.0.0)':
     dependencies:
       '@types/json-schema': 7.0.15
       p-queue: 6.6.2
       p-retry: 4.6.2
       uuid: 9.0.1
     optionalDependencies:
-      '@langchain/core': 0.3.44(openai@5.3.0(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63))
+      '@langchain/core': 0.3.44(openai@5.3.0(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63))
       react: 19.0.0
 
-  '@langchain/langgraph@0.2.67(@langchain/core@0.3.44(openai@5.3.0(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63)))(react@19.0.0)(zod-to-json-schema@3.24.1(zod@3.25.63))':
+  '@langchain/langgraph@0.2.67(@langchain/core@0.3.44(openai@5.3.0(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63)))(react@19.0.0)(zod-to-json-schema@3.24.1(zod@3.25.63))':
     dependencies:
-      '@langchain/core': 0.3.44(openai@5.3.0(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63))
-      '@langchain/langgraph-checkpoint': 0.0.17(@langchain/core@0.3.44(openai@5.3.0(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63)))
-      '@langchain/langgraph-sdk': 0.0.70(@langchain/core@0.3.44(openai@5.3.0(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63)))(react@19.0.0)
+      '@langchain/core': 0.3.44(openai@5.3.0(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63))
+      '@langchain/langgraph-checkpoint': 0.0.17(@langchain/core@0.3.44(openai@5.3.0(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63)))
+      '@langchain/langgraph-sdk': 0.0.70(@langchain/core@0.3.44(openai@5.3.0(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63)))(react@19.0.0)
       uuid: 10.0.0
       zod: 3.25.63
     optionalDependencies:
@@ -9700,11 +9722,11 @@ snapshots:
     transitivePeerDependencies:
       - react
 
-  '@langchain/openai@0.5.7(@langchain/core@0.3.44(openai@5.3.0(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63)))(encoding@0.1.13)(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))':
+  '@langchain/openai@0.5.7(@langchain/core@0.3.44(openai@5.3.0(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63)))(encoding@0.1.13)(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))':
     dependencies:
-      '@langchain/core': 0.3.44(openai@5.3.0(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63))
+      '@langchain/core': 0.3.44(openai@5.3.0(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63))
       js-tiktoken: 1.0.19
-      openai: 4.93.0(encoding@0.1.13)(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63)
+      openai: 4.93.0(encoding@0.1.13)(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63)
       zod: 3.25.63
       zod-to-json-schema: 3.24.1(zod@3.25.63)
     transitivePeerDependencies:
@@ -10200,7 +10222,7 @@ snapshots:
       '@metaplex-foundation/mpl-candy-machine-core': 0.1.2(bufferutil@4.0.9)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10)
       '@metaplex-foundation/mpl-token-metadata': 2.13.0(bufferutil@4.0.9)(encoding@0.1.13)(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.6.3)(utf-8-validate@5.0.10)
       '@noble/ed25519': 1.7.3
-      '@noble/hashes': 1.7.2
+      '@noble/hashes': 1.8.0
       '@solana/spl-account-compression': 0.1.10(@solana/web3.js@1.98.2(bufferutil@4.0.9)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10))(bufferutil@4.0.9)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10)
       '@solana/spl-token': 0.3.11(@solana/web3.js@1.98.2(bufferutil@4.0.9)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10))(bufferutil@4.0.9)(encoding@0.1.13)(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.6.3)(utf-8-validate@5.0.10)
       '@solana/web3.js': 1.98.2(bufferutil@4.0.9)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10)
@@ -10636,7 +10658,7 @@ snapshots:
       '@graphql-typed-document-node/core': 3.2.0(graphql@16.10.0)
       '@mysten/bcs': 1.3.0
       '@noble/curves': 1.8.2
-      '@noble/hashes': 1.7.2
+      '@noble/hashes': 1.8.0
       '@scure/bip32': 1.6.2
       '@scure/bip39': 1.5.4
       '@suchipi/femver': 1.0.0
@@ -10893,14 +10915,14 @@ snapshots:
       - typescript
       - utf-8-validate
 
-  '@openai/agents-core@0.0.7(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63)':
+  '@openai/agents-core@0.0.7(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.24.1)':
     dependencies:
       '@openai/zod': zod@3.25.63
       debug: 4.4.0
-      openai: 5.3.0(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63)
+      openai: 5.3.0(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.24.1)
     optionalDependencies:
       '@modelcontextprotocol/sdk': 1.12.1
-      zod: 3.25.63
+      zod: 3.24.1
     transitivePeerDependencies:
       - supports-color
       - ws
@@ -10929,18 +10951,6 @@ snapshots:
       - supports-color
       - ws
 
-  '@openai/agents-core@0.0.7(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.24.1)':
-    dependencies:
-      '@openai/zod': zod@3.25.63
-      debug: 4.4.0
-      openai: 5.3.0(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.24.1)
-    optionalDependencies:
-      '@modelcontextprotocol/sdk': 1.12.1
-      zod: 3.24.1
-    transitivePeerDependencies:
-      - supports-color
-      - ws
-
   '@openai/agents-core@0.0.7(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63)':
     dependencies:
       '@openai/zod': zod@3.25.63
@@ -10953,23 +10963,12 @@ snapshots:
       - supports-color
       - ws
 
-  '@openai/agents-openai@0.0.7(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63)':
+  '@openai/agents-openai@0.0.7(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.24.1)':
     dependencies:
-      '@openai/agents-core': 0.0.7(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63)
+      '@openai/agents-core': 0.0.7(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.24.1)
       '@openai/zod': zod@3.25.63
       debug: 4.4.0
-      openai: 5.3.0(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63)
-    transitivePeerDependencies:
-      - supports-color
-      - ws
-      - zod
-
-  '@openai/agents-openai@0.0.7(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.24.1)':
-    dependencies:
-      '@openai/agents-core': 0.0.7(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.24.1)
-      '@openai/zod': zod@3.25.63
-      debug: 4.4.0
-      openai: 5.3.0(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.24.1)
+      openai: 5.3.0(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.24.1)
     transitivePeerDependencies:
       - supports-color
       - ws
@@ -11012,27 +11011,13 @@ snapshots:
       - utf-8-validate
       - zod
 
-  '@openai/agents@0.0.7(bufferutil@4.0.9)(utf-8-validate@5.0.10)(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63)':
+  '@openai/agents@0.0.7(bufferutil@4.0.9)(utf-8-validate@5.0.10)(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.24.1)':
     dependencies:
-      '@openai/agents-core': 0.0.7(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63)
-      '@openai/agents-openai': 0.0.7(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63)
-      '@openai/agents-realtime': 0.0.7(bufferutil@4.0.9)(utf-8-validate@5.0.10)(zod@3.25.63)
-      debug: 4.4.0
-      openai: 5.3.0(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63)
-    transitivePeerDependencies:
-      - bufferutil
-      - supports-color
-      - utf-8-validate
-      - ws
-      - zod
-
-  '@openai/agents@0.0.7(bufferutil@4.0.9)(utf-8-validate@5.0.10)(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.24.1)':
-    dependencies:
-      '@openai/agents-core': 0.0.7(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.24.1)
-      '@openai/agents-openai': 0.0.7(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.24.1)
+      '@openai/agents-core': 0.0.7(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.24.1)
+      '@openai/agents-openai': 0.0.7(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.24.1)
       '@openai/agents-realtime': 0.0.7(bufferutil@4.0.9)(utf-8-validate@5.0.10)(zod@3.24.1)
       debug: 4.4.0
-      openai: 5.3.0(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.24.1)
+      openai: 5.3.0(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.24.1)
     transitivePeerDependencies:
       - bufferutil
       - supports-color
@@ -11349,7 +11334,7 @@ snapshots:
   '@pythnetwork/pyth-solana-receiver@0.7.0(bufferutil@4.0.9)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10)':
     dependencies:
       '@coral-xyz/anchor': 0.29.0(bufferutil@4.0.9)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10)
-      '@noble/hashes': 1.7.2
+      '@noble/hashes': 1.8.0
       '@pythnetwork/price-service-sdk': 1.7.1
       '@pythnetwork/solana-utils': 0.4.3(bufferutil@4.0.9)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10)
       '@solana/web3.js': 1.98.2(bufferutil@4.0.9)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10)
@@ -11362,7 +11347,7 @@ snapshots:
   '@pythnetwork/pyth-solana-receiver@0.7.0(bufferutil@4.0.9)(encoding@0.1.13)(typescript@5.8.3)(utf-8-validate@5.0.10)':
     dependencies:
       '@coral-xyz/anchor': 0.29.0(bufferutil@4.0.9)(encoding@0.1.13)(typescript@5.8.3)(utf-8-validate@5.0.10)
-      '@noble/hashes': 1.7.2
+      '@noble/hashes': 1.8.0
       '@pythnetwork/price-service-sdk': 1.7.1
       '@pythnetwork/solana-utils': 0.4.3(bufferutil@4.0.9)(encoding@0.1.13)(typescript@5.8.3)(utf-8-validate@5.0.10)
       '@solana/web3.js': 1.98.2(bufferutil@4.0.9)(encoding@0.1.13)(typescript@5.8.3)(utf-8-validate@5.0.10)
@@ -13114,7 +13099,7 @@ snapshots:
     dependencies:
       '@babel/runtime': 7.27.1
       '@noble/curves': 1.8.2
-      '@noble/hashes': 1.7.2
+      '@noble/hashes': 1.8.0
       '@solana/buffer-layout': 4.0.1
       agentkeepalive: 4.6.0
       bigint-buffer: 1.1.5
@@ -13136,7 +13121,7 @@ snapshots:
     dependencies:
       '@babel/runtime': 7.27.1
       '@noble/curves': 1.8.2
-      '@noble/hashes': 1.7.2
+      '@noble/hashes': 1.8.0
       '@solana/buffer-layout': 4.0.1
       agentkeepalive: 4.6.0
       bigint-buffer: 1.1.5
@@ -13158,7 +13143,7 @@ snapshots:
     dependencies:
       '@babel/runtime': 7.27.1
       '@noble/curves': 1.8.2
-      '@noble/hashes': 1.7.2
+      '@noble/hashes': 1.8.0
       '@solana/buffer-layout': 4.0.1
       agentkeepalive: 4.6.0
       bigint-buffer: 1.1.5
@@ -13320,7 +13305,7 @@ snapshots:
 
   '@solanafm/kinobi-lite@0.12.4':
     dependencies:
-      '@noble/hashes': 1.7.2
+      '@noble/hashes': 1.8.0
 
   '@solanafm/utils@1.1.0':
     dependencies:
@@ -14995,6 +14980,11 @@ snapshots:
       create-hash: 1.2.0
       safe-buffer: 5.2.1
 
+  bs58check@3.0.1:
+    dependencies:
+      '@noble/hashes': 1.8.0
+      bs58: 5.0.0
+
   buffer-layout@1.2.2: {}
 
   buffer-reverse@1.0.1: {}
@@ -15780,7 +15770,7 @@ snapshots:
 
   ethereum-bloom-filters@1.2.0:
     dependencies:
-      '@noble/hashes': 1.7.2
+      '@noble/hashes': 1.8.0
 
   ethereum-cryptography@0.1.3:
     dependencies:
@@ -16849,7 +16839,7 @@ snapshots:
 
   keyvaluestorage-interface@1.0.0: {}
 
-  langsmith@0.3.15(openai@5.3.0(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63)):
+  langsmith@0.3.15(openai@5.3.0(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.24.1)):
     dependencies:
       '@types/uuid': 10.0.0
       chalk: 4.1.2
@@ -16859,19 +16849,7 @@ snapshots:
       semver: 7.7.1
       uuid: 10.0.0
     optionalDependencies:
-      openai: 5.3.0(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63)
-
-  langsmith@0.3.15(openai@5.3.0(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.24.1)):
-    dependencies:
-      '@types/uuid': 10.0.0
-      chalk: 4.1.2
-      console-table-printer: 2.12.1
-      p-queue: 6.6.2
-      p-retry: 4.6.2
-      semver: 7.7.1
-      uuid: 10.0.0
-    optionalDependencies:
-      openai: 5.3.0(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.24.1)
+      openai: 5.3.0(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.24.1)
 
   langsmith@0.3.15(openai@5.3.0(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63)):
     dependencies:
@@ -17355,7 +17333,7 @@ snapshots:
       regex: 5.1.1
       regex-recursion: 5.1.1
 
-  openai@4.93.0(encoding@0.1.13)(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63):
+  openai@4.93.0(encoding@0.1.13)(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63):
     dependencies:
       '@types/node': 18.19.74
       '@types/node-fetch': 2.6.12
@@ -17365,15 +17343,15 @@ snapshots:
       formdata-node: 4.4.1
       node-fetch: 2.7.0(encoding@0.1.13)
     optionalDependencies:
-      ws: 7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10)
+      ws: 8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10)
       zod: 3.25.63
     transitivePeerDependencies:
       - encoding
 
-  openai@5.3.0(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63):
+  openai@5.3.0(ws@7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.24.1):
     optionalDependencies:
       ws: 7.5.10(bufferutil@4.0.9)(utf-8-validate@5.0.10)
-      zod: 3.25.63
+      zod: 3.24.1
 
   openai@5.3.0(ws@8.18.1(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.24.1):
     optionalDependencies:
@@ -17384,11 +17362,6 @@ snapshots:
     optionalDependencies:
       ws: 8.18.1(bufferutil@4.0.9)(utf-8-validate@5.0.10)
       zod: 3.25.63
-
-  openai@5.3.0(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.24.1):
-    optionalDependencies:
-      ws: 8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10)
-      zod: 3.24.1
 
   openai@5.3.0(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.63):
     optionalDependencies:
@@ -18639,24 +18612,6 @@ snapshots:
       diff: 4.0.2
       make-error: 1.3.6
       typescript: 5.8.3
-      v8-compile-cache-lib: 3.0.1
-      yn: 3.1.1
-
-  ts-node@10.9.2(@types/node@22.15.18)(typescript@5.7.3):
-    dependencies:
-      '@cspotcode/source-map-support': 0.8.1
-      '@tsconfig/node10': 1.0.11
-      '@tsconfig/node12': 1.0.11
-      '@tsconfig/node14': 1.0.3
-      '@tsconfig/node16': 1.0.4
-      '@types/node': 22.15.18
-      acorn: 8.15.0
-      acorn-walk: 8.3.4
-      arg: 4.1.3
-      create-require: 1.1.1
-      diff: 4.0.2
-      make-error: 1.3.6
-      typescript: 5.7.3
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
 

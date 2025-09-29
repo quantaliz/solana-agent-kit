@@ -1,6 +1,6 @@
 {
   "name": "@solana-agent-kit/plugin-token",
-  "version": "2.0.8",
+  "version": "2.0.9",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -34,6 +34,9 @@
   },
   "homepage": "https://github.com/sendaifun/solana-agent-kit/tree/v2/packages/plugin-token",
   "dependencies": {
+    "decimal.js": "^10.5.0",
+    "bs58": "^5.0.0",
+    "bs58check": "3.0.1",
     "@lightprotocol/compressed-token": "^0.20.0",
     "@lightprotocol/stateless.js": "^0.20.0",
     "@mayanfinance/swap-sdk": "^10.0.0",

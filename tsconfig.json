@@ -20,6 +20,6 @@
       "@packages/*": ["packages/*"]
     }
   },
-  "include": ["packages/**/*", "test/**/*"],
+  "include": ["packages/**/*"],
   "exclude": ["node_modules", "dist"]
 }

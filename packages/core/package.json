@@ -1,6 +1,6 @@
 {
   "name": "solana-agent-kit",
-  "version": "2.0.9",
+  "version": "2.0.10",
   "type": "module",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
@@ -60,6 +60,7 @@
   },
   "packageManager": "pnpm@9.15.3",
   "dependencies": {
+    "decimal.js": "^10.5.0",
     "@langchain/core": "^0.3.44",
     "@openai/agents": "^0.0.7",
     "@solana/spl-token": "^0.4.13",
