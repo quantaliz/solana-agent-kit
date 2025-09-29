@@ -20,6 +20,7 @@
   "author": "Solana Agent Kit",
   "license": "Apache-2.0",
   "dependencies": {
+    "decimal.js": "^10.5.0",
     "solana-agent-kit": "workspace:*",
     "@solana-agent-kit/adapter-mcp": "workspace:*",
     "@solana-agent-kit/plugin-payments": "workspace:*",
