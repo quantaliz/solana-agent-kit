@@ -1,0 +1,37 @@
+{
+  "name": "@solana-agent-kit/mcp-payments-example",
+  "version": "1.0.0",
+  "description": "Example showing how to use adapter-mcp with plugin-payments",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts"
+  },
+  "keywords": [
+    "solana",
+    "agent",
+    "mcp",
+    "x402",
+    "payments",
+    "ai"
+  ],
+  "author": "Solana Agent Kit",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "decimal.js": "^10.5.0",
+    "@solana/web3.js": "^1.98.2",
+    "bs58": "^6.0.0",
+    "dotenv": "^16.4.5",
+    "@modelcontextprotocol/sdk": "^1.7.0",
+    "@solana-agent-kit/adapter-mcp": "workspace:*",
+    "@solana-agent-kit/plugin-payments": "workspace:*",
+    "solana-agent-kit": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.3.3"
+  }
+}

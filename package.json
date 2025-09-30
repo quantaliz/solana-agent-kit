@@ -3,7 +3,7 @@
   "description": "connect any ai agents to solana protocols",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/*", "solana-agent-kit/examples/x402-payments", "examples/x402-payments-mcp"
   ],
   "scripts": {
     "clean": "turbo run clean",
@@ -14,8 +14,10 @@
     "build:plugin-defi": "turbo run build --filter=@solana-agent-kit/plugin-defi",
     "build:plugin-misc": "turbo run build --filter=@solana-agent-kit/plugin-misc",
     "build:plugin-blinks": "turbo run build --filter=@solana-agent-kit/plugin-blinks",
+    "build:plugin-payments": "turbo run build --filter=@solana-agent-kit/plugin-payments",
     "build:adapter-mcp": "turbo run build --filter=@solana-agent-kit/adapter-mcp",
     "test": "npx tsx test/index.ts",
+    "test:payments": "npx tsx test/plugin-payment-tests/index.ts",
     "docs": "typedoc",
     "generate": "tsx src/utils/keypair.ts",
     "lint": "biome check",
@@ -23,7 +25,10 @@
     "format": "biome format --write",
     "prepare": "husky",
     "version-packages": "changeset version",
-    "publish-packages": "turbo run build && changeset publish"
+    "publish-packages": "turbo run build && changeset publish",
+    "build:examples:payments": "turbo run build --filter=@solana-agent-kit/example-x402-payments",
+    "build:examples:payments-mcp": "turbo run build --filter=@solana-agent-kit/mcp-payments-example",
+    "run:examples:payments-mcp": "pnpm --filter @solana-agent-kit/mcp-payments-example start"
   },
   "engines": {
     "node": ">=22.0.0",

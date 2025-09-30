@@ -34,6 +34,8 @@
   },
   "homepage": "https://github.com/sendaifun/solana-agent-kit/tree/v2/packages/plugin-nft",
   "dependencies": {
+    "decimal.js": "^10.5.0",
+    "bs58": "^5.0.0",
     "@3land/listings-sdk": "^0.0.7",
     "@aptos-labs/aptos-client": "^1.1.0",
     "@coral-xyz/anchor": "^0.30.1",

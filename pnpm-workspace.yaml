@@ -1,7 +1,8 @@
 packages:
   - "packages/*"
   - "test"
-  - "!examples/**/*"
+  - "examples/x402-payments"
+  - "examples/x402-payments-mcp"
   - "!**/para-plugin-example"
   # exclude packages that are inside test directories
   # - "!**/test/**"

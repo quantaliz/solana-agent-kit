@@ -14,3 +14,7 @@ node_modules
 .rollup/
 drizzle/
 tsconfig.tsbuildinfo
+
+.pnpm-store
+.pnpm-home
+.qwen/settings.json

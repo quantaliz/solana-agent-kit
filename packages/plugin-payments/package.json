@@ -1,6 +1,6 @@
 {
-  "name": "solana-agent-kit",
-  "version": "2.0.10",
+  "name": "@solana-agent-kit/plugin-payments",
+  "version": "2.0.7",
   "type": "module",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
@@ -20,27 +20,31 @@
       }
     }
   },
-  "description": "connect any ai agents to solana protocols",
+  "description": "make payments with x402 between ai agents using solana",
   "scripts": {
     "clean": "rm -rf dist .turbo node_modules",
-    "build": "tsup src/index.ts --dts --clean --format cjs,esm --out-dir dist",
-    "test": "jest"
+    "build": "tsup src/index.ts --clean --format cjs,esm --out-dir dist",
+    "build:types": "tsup src/index.ts --dts --clean --format cjs,esm --out-dir dist",
+    "test": "jest",
+    "test:run": "tsx ../../../test/plugin-payment-tests/index.ts"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/sendaifun/solana-agent-kit.git"
+    "url": "https://github.com/quantaliz/solana-agent-kit.git"
   },
-  "homepage": "https://github.com/sendaifun/solana-agent-kit/tree/v2/packages/core",
+  "homepage": "https://github.com/quantaliz/solana-agent-kit/tree/v2/packages/plugin-payments",
   "engines": {
     "node": ">=22.0.0",
     "pnpm": ">=8.0.0"
   },
   "keywords": [
+    "payments",
+    "x402",
     "solana",
     "agent",
     "ai",
     "solana agent kit",
-    "sendai"
+    "quantaliz"
   ],
   "author": "sendaifun",
   "license": "Apache-2.0",
@@ -60,15 +64,18 @@
   },
   "packageManager": "pnpm@9.15.3",
   "dependencies": {
-    "decimal.js": "^10.5.0",
     "@langchain/core": "^0.3.44",
     "@openai/agents": "^0.0.7",
+    "@solana/signers": "^2.3.0",
     "@solana/spl-token": "^0.4.13",
     "@solana/web3.js": "^1.98.2",
     "ai": "^4.1.5",
     "bs58": "^6.0.0",
+    "decimal.js": "^10.5.0",
     "rpc-websockets": "^10.0.0",
+    "solana-agent-kit": "workspace:*",
     "tweetnacl": "^1.0.3",
+    "x402": "^0.6.1",
     "zod": "^3.24.1"
   }
 }
