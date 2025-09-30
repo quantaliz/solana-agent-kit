@@ -3,7 +3,7 @@
   "description": "connect any ai agents to solana protocols",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/*", "solana-agent-kit/examples/x402-payments", "examples/x402-payments-mcp"
   ],
   "scripts": {
     "clean": "turbo run clean",
@@ -25,7 +25,10 @@
     "format": "biome format --write",
     "prepare": "husky",
     "version-packages": "changeset version",
-    "publish-packages": "turbo run build && changeset publish"
+    "publish-packages": "turbo run build && changeset publish",
+    "build:examples:payments": "turbo run build --filter=@solana-agent-kit/example-x402-payments",
+    "build:examples:payments-mcp": "turbo run build --filter=@solana-agent-kit/mcp-payments-example",
+    "run:examples:payments-mcp": "pnpm --filter @solana-agent-kit/mcp-payments-example start"
   },
   "engines": {
     "node": ">=22.0.0",

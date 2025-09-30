@@ -128,11 +128,26 @@ You can view the full documentation of the kit at [docs.sendai.fun](https://docs
 
 The Solana Agent Kit V2 is a major upgrade from V1, to learn why check out our [migration guide](./MIGRATING.md)
 
-## 📦 Core Installation
+## 📦 Core Installation (from this repository source)
 
 ```bash
-npm install solana-agent-kit
+git clone https://github.com/quantaliz/solana-agent-kit
+cd solana-agent-kit
+(**NOTE**: if using NPM 24+) npm install -g node-gyp
+pnpm install
+pnpm build
 ```
+
+If you want to compile the examples:
+
+```bash
+pnpm build:examples:payments
+pnpm build:examples:payments-mcp
+# To run the MCP server
+pnpm run:examples:payments-mcp
+```
+
+NOTE: If you are having troubles compiling because of "Out-of-Memory", use `NODE_OPTIONS="--max-old-space-size=6144"`
 
 ## 📦 Plugin Installation
 
@@ -145,8 +160,6 @@ You can choose to install any of the plugins listed below or you could choose to
 5. Blinks plugin (`@solana-agent-kit/plugin-blinks`): Blinks operations for Solana protocols such as arcade games and more soon to come.
 6. **Cypherpunk special**: Payments plugin (`@solana-agent-kit/plugin-payments`): Make x402-based payments between AI agents using Solana blockchain for protected API access and service payments.
 7. **Cypherpunk special**: MCP Payments plugin (`examples/x402-payments-mcp`): Make x402-based payments using MCP with Claude Code or Codex AI agents using Solana blockchain.
-
-NOTE: If you are having troubles compiling because of "Out-of-Memory", use `NODE_OPTIONS="--max-old-space-size=6144"`
 
 ## Quick Start
 

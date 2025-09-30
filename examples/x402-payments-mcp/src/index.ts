@@ -2,6 +2,7 @@ import * as dotenv from "dotenv";
 import { SolanaAgentKit, KeypairWallet, Action } from "solana-agent-kit";
 // @ts-ignore
 import { startMcpServer, McpServer } from "@solana-agent-kit/adapter-mcp";
+// @ts-ignore
 import PaymentsPlugin from "@solana-agent-kit/plugin-payments";
 import { Keypair } from "@solana/web3.js";
 import bs58 from "bs58";

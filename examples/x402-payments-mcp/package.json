@@ -1,5 +1,5 @@
 {
-  "name": "solana-agent-kit-mcp-payments-example",
+  "name": "@solana-agent-kit/mcp-payments-example",
   "version": "1.0.0",
   "description": "Example showing how to use adapter-mcp with plugin-payments",
   "main": "dist/index.js",
@@ -21,13 +21,13 @@
   "license": "Apache-2.0",
   "dependencies": {
     "decimal.js": "^10.5.0",
-    "solana-agent-kit": "workspace:*",
-    "@solana-agent-kit/adapter-mcp": "workspace:*",
-    "@solana-agent-kit/plugin-payments": "workspace:*",
     "@solana/web3.js": "^1.98.2",
     "bs58": "^6.0.0",
     "dotenv": "^16.4.5",
-    "@modelcontextprotocol/sdk": "^1.7.0"
+    "@modelcontextprotocol/sdk": "^1.7.0",
+    "@solana-agent-kit/adapter-mcp": "workspace:*",
+    "@solana-agent-kit/plugin-payments": "workspace:*",
+    "solana-agent-kit": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",
