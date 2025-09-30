@@ -2,15 +2,15 @@
 
 # Solana Agent Kit
 
-## ⚠️ FORK NOTICE: This is a fork of the original repository created for the "Cypherpink" hackathon
+## ⚠️ FORK NOTICE: This is a fork of the original repository created for the Cypherpunk hackathon
 
 **Original Repository**: [https://github.com/sendaifun/solana-agent-kit](https://github.com/sendaifun/solana-agent-kit)
 
 </div>
 
-This fork has been modified to enhance specific functionality for hackathon projects. The primary changes include:
+----
 
-## Payments Plugin - Developed for Cypherpunk
+## Payments Plugin - Developed for **Cypherpunk**
 - Add `@solana-agent-kit/plugin-payments` with a production-ready x402 payment pipeline that caches signers, infers the right Solana network, and surfaces both `makeX402PaymentRequest` and `getX402PaymentInfo` so agents can paywall-hop autonomously.
 - Delivered first-class agent UX with the `x402_payment_request` action and AI tool wiring, letting everything from Vercel AI SDK flows to MCP deployments tap payments without glue code.
 - Built end-to-end mocks and integration tests in `test/plugin-payment-tests/payments.ts` that simulate RPC primitives, 402 challenges, and payment receipts, proving the plugin pays and retries correctly.
@@ -18,7 +18,7 @@ This fork has been modified to enhance specific functionality for hackathon proj
 - Hardened packaging and CI posture via updated build targets, TypeScript configs, and dependency hygiene, keeping the workspace compiling cleanly even in constrained environments.
 - Added hackathon-ready `docs/x402.md` and storytelling so judges and builders can spin up wallets, run demos, and understand the payments flow start-to-finish.
 
-
+----
 
 An open-source toolkit for connecting AI agents to Solana protocols. Now, any agent, using any model can autonomously perform 60+ Solana actions:
 
@@ -32,60 +32,18 @@ An open-source toolkit for connecting AI agents to Solana protocols. Now, any ag
 - Bridge tokens across chains
 - And more...
 
-Anyone - whether an SF-based AI researcher or a crypto-native builder - can bring their AI agents trained with any model and seamlessly integrate with Solana.
 
 ## 🔧 Core Blockchain Features
 
-- **Token Operations**
-  - Deploy SPL tokens by Metaplex
-  - Transfer assets
-  - Balance checks
-  - Stake SOL
-  - Zk compressed Airdrop by Light Protocol and Helius
-  - Bridge tokens across chains using Wormhole
-- **NFTs on 3.Land**
-  - Create your own collection
-  - NFT creation and automatic listing on 3.land
-  - List your NFT for sale in any SPL token
-- **NFT Management via Metaplex**
-  - Collection deployment
-  - NFT minting
-  - Metadata management
-  - Royalty configuration
+- Token Operations
+- NFTs on 3.Land
+- NFT Management via Metaplex
+- DeFi Integration
+- Solana Blinks
+- Non-Financial Actions
+- Market Data Integration
 
-- **DeFi Integration**
-  - Jupiter Exchange swaps
-  - Launch on Pump via PumpPortal
-  - Raydium pool creation (CPMM, CLMM, AMMv4)
-  - Orca Whirlpool integration
-  - Manifest market creation, and limit orders
-  - Meteora Dynamic AMM, DLMM Pool, and Alpha Vault
-  - Openbook market creation
-  - Register and Resolve SNS
-  - Jito Bundles
-  - Pyth Price feeds for fetching Asset Prices
-  - Register/resolve Alldomains
-  - Perpetuals Trading with Adrena Protocol
-  - Drift Vaults, Perps, Lending and Borrowing
-  - Cross-chain bridging via deBridge DLN
-  - Cross chain bridging via Wormhole
-
-- **Solana Blinks**
-   - Lending by Lulo (Best APR for USDC)
-   - Send Arcade Games
-   - JupSOL staking
-   - Solayer SOL (sSOL)staking
-
-- **Non-Financial Actions**
-  - Gib Work for registering bounties
-
-- **Market Data Integration**
-  - CoinGecko Pro API integration
-  - Real-time token price data
-  - Trending tokens and pools
-  - Top gainers analysis
-  - Token information lookup
-  - Latest pool tracking
+And in particular for the hackathon...
 
 ## 💳 x402 Payments & MCP
 
@@ -97,36 +55,14 @@ Anyone - whether an SF-based AI researcher or a crypto-native builder - can brin
 
 ## 🤖 AI Integration Features
 
-- **LangChain Integration**
-  - Ready-to-use LangChain tools for blockchain operations
-  - Autonomous agent support with React framework
-  - Memory management for persistent interactions
-  - Streaming responses for real-time feedback
-
-- **Vercel AI SDK Integration**
-  - Vercel AI SDK for AI agent integration
-  - Framework agnostic support
-  - Quick and easy toolkit setup
-
-- **Autonomous Modes**
-  - Interactive chat mode for guided operations
-  - Autonomous mode for independent agent actions
-  - Configurable action intervals
-  - Built-in error handling and recovery
-
-- **AI Tools**
-  - DALL-E integration for NFT artwork generation
-  - Natural language processing for blockchain commands
-  - Price feed integration for market analysis
-  - Automated decision-making capabilities
+- LangChain Integration
+- Vercel AI SDK Integration
+- Autonomous Modes
+- AI Tools
 
 ## 📃 Documentation
 
-You can view the full documentation of the kit at [docs.sendai.fun](https://docs.sendai.fun/v0/introduction)
-
-## Why We Built V2 and Why Upgrade?
-
-The Solana Agent Kit V2 is a major upgrade from V1, to learn why check out our [migration guide](./MIGRATING.md)
+You can view the (original) full documentation of the kit at [docs.sendai.fun](https://docs.sendai.fun/v0/introduction)
 
 ## 📦 Core Installation (from this repository source)
 
@@ -143,7 +79,11 @@ If you want to compile the examples:
 ```bash
 pnpm build:examples:payments
 pnpm build:examples:payments-mcp
-# To run the MCP server
+```
+
+To run the MCP server
+
+```
 pnpm run:examples:payments-mcp
 ```
 
@@ -233,7 +173,7 @@ const paymentInfo = await agent.methods.getX402PaymentInfo(
 console.log("Payment info:", paymentInfo);
 ```
 
-## **Cypherpink special Examples
+## **Cypherpunk special** Examples
 
 ### x402 Payments Example
 
