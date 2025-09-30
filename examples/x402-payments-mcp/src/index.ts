@@ -1,6 +1,7 @@
 import * as dotenv from "dotenv";
 import { SolanaAgentKit, KeypairWallet, Action } from "solana-agent-kit";
-import { startMcpServer } from "@solana-agent-kit/adapter-mcp";
+// @ts-ignore
+import { startMcpServer, McpServer } from "@solana-agent-kit/adapter-mcp";
 import PaymentsPlugin from "@solana-agent-kit/plugin-payments";
 import { Keypair } from "@solana/web3.js";
 import bs58 from "bs58";
@@ -45,7 +46,7 @@ const mcpActions: Record<string, Action> = {
   BALANCE_ACTION: agent.actions.find((action) => action.name === "BALANCE_ACTION")!,
   TOKEN_BALANCE_ACTION: agent.actions.find((action) => action.name === "TOKEN_BALANCE_ACTION")!,
   GET_WALLET_ADDRESS_ACTION: agent.actions.find((action) => action.name === "GET_WALLET_ADDRESS_ACTION")!,
-  
+
   // Payment actions
   X402_PAYMENT_ACTION: agent.actions.find((action) => action.name === "X402_PAYMENT_ACTION")!,
 };
@@ -56,11 +57,11 @@ console.log(`📋 Available actions: ${Object.keys(mcpActions).join(', ')}`);
 
 // Start the MCP server
 startMcpServer(mcpActions, agent, { name: "solana-agent-payments", version: "1.0.0" })
-  .then(server => {
+  .then((server: McpServer) => {
     console.log("✅ MCP server started successfully!");
     console.log("💡 The server is now ready to handle requests from MCP-compatible AI assistants");
   })
-  .catch(error => {
+  .catch((error: unknown) => {
     console.error("❌ Error starting MCP server:", error);
     process.exit(1);
   });

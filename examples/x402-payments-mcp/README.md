@@ -5,14 +5,14 @@ This example demonstrates how to use the `@solana-agent-kit/adapter-mcp` with th
 ## Prerequisites
 
 - Node.js (v16 or higher recommended)
-- pnpm, yarn, or npm
+- pnpm (preferred), yarn, or npm
 - Solana wallet with private key
 - Solana RPC URL
 - Claude Desktop (or another MCP-compatible AI assistant)
 
 ## Installation
 
-1. Install dependencies:
+1. Install dependencies at `solana-agent-kit/examples/x402-payments-mcp`:
 
 ```bash
 pnpm install
@@ -111,3 +111,25 @@ The server exposes all Solana Agent Kit actions, including:
 - Verify that your RPC URL is correct and accessible
 - Check that your Claude Desktop configuration is properly formatted
 - Make sure to restart Claude Desktop after configuration changes
+
+## Test
+
+You can test the payment with the following prompt:
+
+```
+Help me make a payment to https://x402.payai.network/api/solana-devnet/paid-content then tell me the results
+```
+
+When the wallet has at least 0.1 USDC in funds, it will make the payment, for which you should see something like this:
+
+```
+ I've successfully made the payment to the X402 payment endpoint. Here are the details of the transaction:
+
+   - Transaction ID: ghySvV1afdme3eU5cbxbV64qpH8jsMSMQEs5h1Yn74NaLjzwGvsxPU51kawg4xqjzPETpz3vynBgJevvjSSdGw
+   - Network: Solana Devnet
+   - Payer: 7dRXJd2pmzpPzXx7Dxo1oapVGRF4jXsWeKRnmEKSfM7
+   - Premium Content: "Have some rizz!"
+   - Refund Transaction: 3SNAYwvIotARdJLmrQZP9maDzZTh5vczrmvKbeCZi2yMNyFTYENVY9Tx3TVPCmALZy1mTJ7FAgfrCZUemSSV
+
+  The payment was successful and you've received access to the premium content.
+  ```
