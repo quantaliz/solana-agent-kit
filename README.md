@@ -140,7 +140,6 @@ const result = await makeX402PaymentRequest(
 ### Network Support
 - ✅ Solana Mainnet
 - ✅ Solana Devnet
-- 🔄 Multi-chain support (future)
 
 ## 📚 Documentation
 
@@ -235,6 +234,8 @@ const tools = createVercelAITools(agent, agent.actions);
 ### Agent with Embedded Wallet Support
 
 You can also use wallet interfaces from Solana wallet adapters for embedded wallet integration (Privy, Crossmint, Phantom, etc.).
+
+Check **[SolAIBot](https://github.com/quantaliz/solaibot)**, an on-device LLM capable of paying x402 endpoints.
 
 ### x402 Payment Flow
 
@@ -373,13 +374,6 @@ Tests cover:
 - `@langchain/core` - LangChain integration
 - `@openai/agents` - OpenAI agents support
 - `@modelcontextprotocol/sdk` - MCP integration
-
-## 🤝 Contributing
-
-We welcome contributions! Check out:
-- `AGENTS.md` - Full project context
-- `docs/x402.md` - Payment implementation guide
-- `test/plugin-payment-tests/` - Testing patterns
 
 ## 📄 License
 
