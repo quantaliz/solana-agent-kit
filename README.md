@@ -489,7 +489,7 @@ Tests cover:
 ## 👤 About Quantaliz
 
 <div align="center">
-<img src="../images/Quantaliz.png" width="200" alt="Quantaliz Logo" />
+<img src="https://github.com/quantaliz/solaibot/blob/main/images/Quantaliz.png?raw=true" width="200" alt="Quantaliz Logo" />
 </div>
 
 **[Quantaliz PTY LTD](https://www.quantaliz.com)** is pioneering the intersection of AI agents and decentralized technologies. We believe the future of AI is autonomous, self-sovereign, and economically integrated with Web3.
