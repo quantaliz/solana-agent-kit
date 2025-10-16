@@ -78,7 +78,7 @@ The toolkit enables AI agents to autonomously perform:
 - ✅ No central authority for agent transactions
 - ✅ Cypherpunk ethos: "Privacy is necessary for an open society in the electronic age"
 
-**[Hackaroo 2025](https://www.hackaroo.xyz)** - Payments with Blockchain
+**[Hackaroo 2025](https://www.hackaroo.xyz)** - Solana Micropayments
 - ✅ Novel x402 payment protocol integration with Solana
 - ✅ AI agent autonomy with blockchain interaction
 - ✅ Solana ecosystem advancement (Web3.js, transaction building, RPC)
