@@ -6,7 +6,13 @@
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
-**Hackathon Submission:** Cypherpunk 2025 & Hackaroo 2025
+Part of the **Financially Autonomous AI Agents with x402 Payments** suite, working in concert with the SolAIBot Android app and the Agent Commerce Platform described in the root [`README.md`](../README.md).
+
+### Hackathon Submissions
+- [Cypherpunk 2025](https://www.colosseum.com/cypherpunk)
+- [Hackaroo 2025](https://www.hackaroo.xyz)
+- [Superteam Zerion Consumer App Challenge](https://earn.superteam.fun/listing/build-a-consumer-app-on-solana-using-the-zerion-api)
+- [ASI Agents Track](https://earn.superteam.fun/listing/asi-agents-track/)
 
 </div>
 
@@ -516,14 +522,11 @@ Licensed under the **Apache License 2.0** - See [LICENSE](LICENSE) for details.
 
 ## 🚀 Give Your AI Agents Financial Autonomy
 
-**Built for Cypherpunk 2025 & Hackaroo 2025**
+**Built for Cypherpunk 2025, Hackaroo 2025, Superteam Zerion Consumer App Challenge, and ASI Agents Track**
 
-*Demonstrating that AI agents can be self-sovereign and financially autonomous*
+*Demonstrating that AI agents can respect privacy and become financially autonomous*
 
-[![Star](https://img.shields.io/github/stars/quantaliz/solana-agent-kit?style=social)](https://github.com/quantaliz/solana-agent-kit)
-[![Cypherpunk](https://img.shields.io/badge/Cypherpunk-2025-purple.svg)](https://www.colosseum.com/cypherpunk)
-[![Hackaroo](https://img.shields.io/badge/Hackaroo-2025-orange.svg)](https://www.hackaroo.xyz)
+⭐ Star repo | [📱 Download the app](https://github.com/quantaliz/solaibot/releases/latest/) | [🤖 Try the live agent](https://agentverse.ai/agents/details/agent1qtem7xxuw9w65he0cr35u8r8v3fqhz6qh8qfhfl9u3x04m89t8dasd48sve/profile) | 💻 Run examples
 
-⭐ Star this repo | 🔗 Try the examples | 💬 Join the discussion
 
 </div>
