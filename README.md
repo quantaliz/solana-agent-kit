@@ -11,7 +11,7 @@ Part of the **Financially Autonomous AI Agents with x402 Payments** suite, worki
 ### Hackathon Submissions
 - [Cypherpunk 2025](https://www.colosseum.com/cypherpunk)
 - [Hackaroo 2025](https://www.hackaroo.xyz)
-- [Superteam Zerion Consumer App Challenge](https://earn.superteam.fun/listing/build-a-consumer-app-on-solana-using-the-zerion-api)
+- [Zerion App Challenge](https://earn.superteam.fun/listing/build-a-consumer-app-on-solana-using-the-zerion-api)
 - [ASI Agents Track](https://earn.superteam.fun/listing/asi-agents-track/)
 
 </div>
@@ -522,7 +522,7 @@ Licensed under the **Apache License 2.0** - See [LICENSE](LICENSE) for details.
 
 ## 🚀 Give Your AI Agents Financial Autonomy
 
-**Built for Cypherpunk 2025, Hackaroo 2025, Superteam Zerion Consumer App Challenge, and ASI Agents Track**
+**Built for Cypherpunk 2025, Hackaroo 2025, Zerion App Challenge, and ASI Agents Track**
 
 *Demonstrating that AI agents can respect privacy and become financially autonomous*
 
